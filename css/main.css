@@ -66,6 +66,8 @@ body {
 .container {
   min-height:100%;
   position:relative;
+  color: #fff;
+  padding: 50px;
 }
 
 /* Helper classes */

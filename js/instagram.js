@@ -9,10 +9,15 @@ $.ajax({
 	type: 'GET',
 	data: {access_token: token, count: num_photos},
 	success: function(data){
- 		console.log(data);
-		for( x in data.data ){
-			$('body').css('background-image','url('+data.data[x].images.standard_resolution.url+')');
-		}
+ 		console.log("data", data);
+
+     const url = data.data[0].images.standard_resolution.url;
+     const matched = url.split('/')[4];
+     const replaced = url.replace(`${matched}/`, '');
+
+     console.log("replaced", replaced)
+
+     $('body').css('background-image','url('+replaced+')');
 	},
 	error: function(data){
 		console.log(data);
