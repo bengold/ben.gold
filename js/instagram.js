@@ -1,4 +1,3 @@
-
 var token = '1085520.839cbb8.7adff04f35d249f48a12df7fecd9262a',
     userid = 1085520,
     num_photos = 1;
@@ -15,5 +14,18 @@ $.ajax({
      url = url.replace(`${arr[4]}/${arr[5]}/`, '');   
      
      $('body').css('background-image','url('+url+')');
-	}
+
+     var img = document.createElement('img');
+
+     img.setAttribute('src', url)
+     img.crossOrigin = "Anonymous";
+
+     img.addEventListener('load', function() {
+        var vibrant = new Vibrant(img);
+        var swatches = vibrant.swatches();
+        const color = swatches.Vibrant.getHex();
+        $("body").css("border-color", color);
+
+    });
+  }
 });
